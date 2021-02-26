@@ -48,43 +48,22 @@ function addHeapObject(obj) {
     return idx;
 }
 /**
+* @param {number} n
+* @returns {Uint32Array}
 */
-class WasmUint8Array {
+module.exports.alloc1 = function(n) {
+    var ret = wasm.alloc1(n);
+    return takeObject(ret);
+};
 
-    static __wrap(ptr) {
-        const obj = Object.create(WasmUint8Array.prototype);
-        obj.ptr = ptr;
-
-        return obj;
-    }
-
-    __destroy_into_raw() {
-        const ptr = this.ptr;
-        this.ptr = 0;
-
-        return ptr;
-    }
-
-    free() {
-        const ptr = this.__destroy_into_raw();
-        wasm.__wbg_wasmuint8array_free(ptr);
-    }
-    /**
-    * @param {number} size
-    */
-    constructor(size) {
-        var ret = wasm.wasmuint8array_new(size);
-        return WasmUint8Array.__wrap(ret);
-    }
-    /**
-    * @returns {Uint8Array}
-    */
-    get view() {
-        var ret = wasm.wasmuint8array_view(this.ptr);
-        return takeObject(ret);
-    }
-}
-module.exports.WasmUint8Array = WasmUint8Array;
+/**
+* @param {number} n
+* @returns {Uint32Array}
+*/
+module.exports.alloc2 = function(n) {
+    var ret = wasm.alloc2(n);
+    return takeObject(ret);
+};
 
 module.exports.__wbindgen_object_drop_ref = function(arg0) {
     takeObject(arg0);
@@ -95,8 +74,8 @@ module.exports.__wbg_buffer_bc64154385c04ac4 = function(arg0) {
     return addHeapObject(ret);
 };
 
-module.exports.__wbg_newwithbyteoffsetandlength_3c8748473807c7cf = function(arg0, arg1, arg2) {
-    var ret = new Uint8Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
+module.exports.__wbg_newwithbyteoffsetandlength_4fec8b44f7ca5e63 = function(arg0, arg1, arg2) {
+    var ret = new Uint32Array(getObject(arg0), arg1 >>> 0, arg2 >>> 0);
     return addHeapObject(ret);
 };
 

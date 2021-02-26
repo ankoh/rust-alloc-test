@@ -1,15 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+* @param {number} n
+* @returns {Uint32Array}
 */
-export class WasmUint8Array {
-  free(): void;
+export function alloc1(n: number): Uint32Array;
 /**
-* @param {number} size
+* @param {number} n
+* @returns {Uint32Array}
 */
-  constructor(size: number);
-/**
-* @returns {Uint8Array}
-*/
-  readonly view: Uint8Array;
-}
+export function alloc2(n: number): Uint32Array;
