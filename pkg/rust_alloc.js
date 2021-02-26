@@ -57,6 +57,14 @@ module.exports.alloc1 = function(n) {
 };
 
 /**
+* @returns {Uint32Array}
+*/
+module.exports.get1 = function() {
+    var ret = wasm.get1();
+    return takeObject(ret);
+};
+
+/**
 * @param {number} n
 * @returns {Uint32Array}
 */

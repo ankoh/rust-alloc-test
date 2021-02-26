@@ -21,10 +21,17 @@ pub fn alloc1(n: usize) -> js_sys::Uint32Array {
 }
 
 #[wasm_bindgen]
+pub fn get1() -> js_sys::Uint32Array {
+    let locked = BUFFER1.lock().unwrap();
+    let b = &mut locked.borrow_mut();
+    unsafe { js_sys::Uint32Array::view_mut_raw(b.as_mut_ptr(), b.len()) }
+}
+
+#[wasm_bindgen]
 pub fn alloc2(n: usize) -> js_sys::Uint32Array {
     let locked = BUFFER2.lock().unwrap();
     let b = &mut locked.borrow_mut();
-    b.resize(n as usize, 0);
+    b.resize(n, 0);
     for i in 0..n {
         b[i] = i as u32;
     }

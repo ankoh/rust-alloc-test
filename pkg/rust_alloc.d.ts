@@ -6,6 +6,10 @@
 */
 export function alloc1(n: number): Uint32Array;
 /**
+* @returns {Uint32Array}
+*/
+export function get1(): Uint32Array;
+/**
 * @param {number} n
 * @returns {Uint32Array}
 */
