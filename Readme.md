@@ -18,4 +18,8 @@ large Uint32Array(250000000) [
   ... 249999900 more items
 ]
 small Uint32Array(0) []
+small reload Uint32Array(10) [
+  0, 1, 2, 3, 4,
+  5, 6, 7, 8, 9
+]
 ```
